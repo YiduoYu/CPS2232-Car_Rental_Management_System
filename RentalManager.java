@@ -236,8 +236,9 @@ public class RentalManager {
     // Send email
     private void sendEmail(String to, String subject, String content) {
         // QQ mail configuration
-        String from = "***REMOVED***";
-        String password = "***REMOVED***"; // This is an application-specific password
+        // SMTP credentials are read from environment variables
+        String from = System.getenv("SMTP_USER");
+        String password = System.getenv("SMTP_PASSWORD");
 
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.qq.com");
